@@ -1,28 +1,33 @@
-import { Controller, Get, Query, Res } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Query,
+  Res,
+  UsePipes,
+  ValidationPipe,
+} from '@nestjs/common';
 import { LighthouseService } from './lighthouse.service';
 import { Response } from 'express';
+import { LighthouseReportDto } from './dto/lighthouse-report.dto';
 
 @Controller('lighthouse')
 export class LighthouseController {
   constructor(private readonly lighthouseService: LighthouseService) {}
 
   @Get()
+  @UsePipes(new ValidationPipe({ transform: true }))
   async getLighthouseReport(
-    @Query('url') url: string,
-    @Query('times') times: number,
+    @Query() query: LighthouseReportDto,
     @Res() res: Response,
   ) {
-    if (!url) {
-      return res.status(400).send('URL is required');
-    }
+    const { url, times } = query;
 
     try {
-      this.lighthouseService.handleTest({ url, times }).then((json) => {
-        res.json(json);
-      });
+      const json = await this.lighthouseService.handleTest({ url, times });
+      return res.json(json);
     } catch (error) {
       console.error(`Error: ${error.message}`);
-      res.status(500).send('Internal server error');
+      return res.status(500).send('Internal server error');
     }
   }
 }
