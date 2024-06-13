@@ -11,7 +11,7 @@ export class LighthouseService {
 
   async testOnce(url: string) {
     try {
-      const command = `lighthouse ${url} --output json`;
+      const command = `lighthouse ${url} --output json --chrome-flags="--no-sandbox`;
       const { stdout, stderr } = await execPromise(command, {
         maxBuffer: 10 * 1024 * 1024,
       });
