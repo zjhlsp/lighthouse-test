@@ -58,6 +58,10 @@ async function sendToFeishu(message) {
                     tag: 'text',
                     text: `  - commit id: ${item.id} \n \n`,
                   },
+                  {
+                    tag: 'text',
+                    text: `----------------------------------------- \n \n`,
+                  },
                 ];
               }),
 
