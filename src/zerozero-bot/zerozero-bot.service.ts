@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { CreateZerozeroBotDto, text } from './dto/create-zerozero-bot.dto';
 import { UpdateZerozeroBotDto } from './dto/update-zerozero-bot.dto';
 const WEBHOOK_URL =
-  'https://open.feishu.cn/open-apis/bot/v2/hook/d6793679-b8e0-445b-9a6d-a63a1e733dea';
+  'https://open.feishu.cn/open-apis/bot/v2/hook/080417c6-ef64-4c42-9b32-c9614ca7ebcf';
 // 格式化提交记录
 function formatCommits(commits) {
   const message = {
