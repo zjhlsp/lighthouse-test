@@ -5,6 +5,7 @@ import { UpdateZerozeroBotDto } from './dto/update-zerozero-bot.dto';
 @Injectable()
 export class ZerozeroBotService {
   create(createZerozeroBotDto: CreateZerozeroBotDto) {
+    console.log(createZerozeroBotDto);
     return 'This action adds a new zerozeroBot';
   }
 
