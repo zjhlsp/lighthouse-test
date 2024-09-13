@@ -50,8 +50,8 @@ async function sendToFeishu(message) {
               zh_cn: {
                 title:
                   message.branch === 'test'
-                    ? `⭐ ${message.name} 测试服更新 ⭐`
-                    : `✨ ${message.name} 正式服更新 ✨`,
+                    ? `✨ ${message.name} 测试服更新 ✨`
+                    : `🚀 ${message.name} 正式服更新 🚀`,
                 content: message.commits.map((item) => {
                   return [
                     {
