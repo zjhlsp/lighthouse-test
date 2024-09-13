@@ -22,8 +22,8 @@ function formatCommits(commits) {
       })
       .filter(
         (item) =>
-          item.message.includes('Merge pull request') ||
-          item.message.includes('Update from Shopify'),
+          !item.message.includes('Merge pull request') &&
+          !item.message.includes('Update from Shopify'),
       ),
   };
   return message;
