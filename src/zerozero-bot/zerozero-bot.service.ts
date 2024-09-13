@@ -6,7 +6,7 @@ const WEBHOOK_URL =
   'https://open.feishu.cn/open-apis/bot/v2/hook/d6793679-b8e0-445b-9a6d-a63a1e733dea;';
 // 格式化提交记录
 function formatCommits(commits) {
-  console.log(commits);
+  // console.log(commits);
   const message = {
     branch: commits?.ref?.split('/')?.pop() || '',
     name: commits.repository.name,
