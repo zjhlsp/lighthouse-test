@@ -7,7 +7,7 @@ const WEBHOOK_URL =
 function formatCommits(commits) {
   // console.log(commits.ref);
   const message = {
-    branch: commits.ref.split('/').pop(),
+    branch: commits?.ref?.split('/')?.pop() || '',
     name: commits.repository.name,
     url: commits.repository.url,
     commits: commits.commits
