@@ -89,7 +89,7 @@ export class ZerozeroBotService {
   async create(createZerozeroBotDto: CreateZerozeroBotDto) {
     const content = createZerozeroBotDto || text;
     const msg = formatCommits(content);
-    // await sendToFeishu(msg);
+    await sendToFeishu(msg);
   }
 
   findAll() {
