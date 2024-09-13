@@ -78,7 +78,7 @@ async function sendToFeishu(message) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
 
-      console.log('消息发送成功!q', response);
+      console.log('消息发送成功!', response);
     } catch (error) {
       console.error(`消息发送失败! 错误: ${error}`);
     }
