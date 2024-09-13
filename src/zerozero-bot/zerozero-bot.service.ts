@@ -78,38 +78,7 @@ async function sendToFeishu(message) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
 
-      console.log(
-        '消息发送成功!',
-        JSON.stringify({
-          msg_type: 'post',
-          content: {
-            post: {
-              zh_cn: {
-                title:
-                  message.branch === 'test'
-                    ? `⭐ ${message.name} 测试服更新 ⭐`
-                    : `✨ ${message.name} 正式服更新 ✨`,
-                content: message.commits.map((item) => {
-                  return [
-                    {
-                      tag: 'text',
-                      text: `🥇更新🥇: ${item.message} \n`,
-                    },
-                    {
-                      tag: 'text',
-                      text: `🥈时间🥈: ${item.timestamp} \n`,
-                    },
-                    {
-                      tag: 'text',
-                      text: `------------------------- \n`,
-                    },
-                  ];
-                }),
-              },
-            },
-          },
-        }),
-      );
+      console.log('消息发送成功!', response);
     } catch (error) {
       console.error(`消息发送失败! 错误: ${error}`);
     }
