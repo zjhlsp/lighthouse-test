@@ -33,13 +33,14 @@ async function sendToFeishu(message) {
     ) {
       return;
     }
-    const msg = message.commits.filter(
-      (item) =>
-        !(
-          item.message.includes('Merge pull request') ||
-          item.message.includes('Update from Shopify')
-        ),
-    );
+    const msg = message.commits.map((item) => {
+      if (item.message.includes('Merge pull request')) {
+        item.message = 'Merge操作';
+      } else if (item.message.includes('Update from Shopify')) {
+        item.message = 'Shopify 线上修改';
+      }
+      return item;
+    });
     const response = await fetch(WEBHOOK_URL, {
       method: 'POST',
       headers: {
@@ -58,11 +59,11 @@ async function sendToFeishu(message) {
                 return [
                   {
                     tag: 'text',
-                    text: `🥇更新🥇: ${item.message} \n`,
+                    text: `🥇更新: ${item.message} \n`,
                   },
                   {
                     tag: 'text',
-                    text: `🥈时间🥈: ${item.timestamp} \n`,
+                    text: `🥈时间: ${item.timestamp} \n`,
                   },
                   {
                     tag: 'text',
