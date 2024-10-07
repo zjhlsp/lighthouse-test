@@ -19,6 +19,10 @@ export class ZerozeroBotController {
   create(@Body() createZerozeroBotDto: CreateZerozeroBotDto) {
     return this.zerozeroBotService.create(createZerozeroBotDto);
   }
+  @Post('shopify-alarm')
+  handleShopifyAlarm(@Body() shopifyAlarm: any) {
+    return this.zerozeroBotService.handleShopifyAlarm(shopifyAlarm);
+  }
 
   @Get()
   findAll() {

@@ -121,6 +121,13 @@ export class ZerozeroBotService {
     await sendToFeishu(msg);
   }
 
+  handleShopifyAlarm(event: any) {
+    const content = event || '';
+    if (content) {
+      console.log('content', content);
+    }
+  }
+
   findAll() {
     return `This action returns all zerozeroBot`;
   }
