@@ -6,6 +6,7 @@ import {
   Patch,
   Param,
   Delete,
+  Request,
 } from '@nestjs/common';
 import { ZerozeroBotService } from './zerozero-bot.service';
 import { CreateZerozeroBotDto } from './dto/create-zerozero-bot.dto';
@@ -25,8 +26,9 @@ export class ZerozeroBotController {
   }
 
   @Get()
-  findAll() {
-    return this.zerozeroBotService.findAll();
+  getIp(@Request() req): string {
+    const ip = req.clientIp; // 获取请求的 IP 地址
+    return `Your IP address is: ${ip}`;
   }
 
   @Get(':id')
