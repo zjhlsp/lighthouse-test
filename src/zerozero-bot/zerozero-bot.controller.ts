@@ -28,7 +28,7 @@ export class ZerozeroBotController {
   @Get()
   getIp(@Request() req): string {
     const ip = req.clientIp; // 获取请求的 IP 地址
-    return `Your IP address is: ${ip}`;
+    return `${ip}`;
   }
 
   @Get(':id')
